@@ -1,2 +1,2 @@
-# CI time
+# CI
 
