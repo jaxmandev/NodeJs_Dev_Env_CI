@@ -86,12 +86,12 @@ This documents the process of creating a CI pipeline for a Sparta sample node ap
 
 ## Testing merges
 * Test 1 - Configured file to listen to the Dev branch. A notification was sent to Microsoft Teams as shown in the image below.
-![success_notification](images/success.png)
+
 
 * Test 2 - A small change was made to test to check if failures are not merged. As shown in the image below, changes were not pushed to main.     
-![failed merge](images/failed_merge.png)        
+      
 Likewise the notification sent to Teams notified a failure.   
-![failure notification](images/test2_failure.png)   
+
 * Test 3 - Reverted back to tests passing which led to successful merges and a successful build notification on Teams.      
-![test3](images/test3_success.png)     
+    
 * Test 4 - Checking pipeline integration
