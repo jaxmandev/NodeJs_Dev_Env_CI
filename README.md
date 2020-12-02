@@ -40,24 +40,24 @@ This documents the process of creating a CI pipeline for a Sparta sample node ap
     * Write a description (optional)
     * Check the box marked 'discard old builds' and set the 'max # of build to keep' to an appropriate value e.g. 2
     * Check the box marked 'GitHub project' and paste the url of your GitHub repository.
-    ![general](images/general.png)
+ 
   * **Office 365 Connector**
     * Check the box marked 'restrict where this project can be run' and type 'sparta-ubuntu-node' (N.B. Begin typing and this should show in the drop down. It may require re-selecting to get rid of errors.)
     * Send notifications to Teams via the 'Add a Webhook tab'. The URL can be found by navigating to Microsoft Teams and clicking the options(...) for the channel you wish to send notifications to. From the drop-down, select 'connectors' and then 'Jenkins'. Copy the URL link and paste on Jenkins. The name can be any descriptive name. Select the notifications you wish to receive i.e. successes, failures etc.
-    ![office](images/office_365_connector.png)
+   
   * **Source Code Management**    
     * Check the box marked 'Git'          
     * In 'Repository URL' add the ssh key of the repository you wish to link. This can be accessed via clicking 'code' on the home page of the repository. Select ssh and copy the key. This will throw an error. Proceed to 'Credentials'
-    * Click the 'Add' button beside 'Credentials'. This will enable you to add an authentication key. If this has not been created, refer back to the generic [configuration](https://github.com/A-Ahmed100216/jenkins_intro/blob/main/jenkins.md)
+    * Click the 'Add' button beside 'Credentials'. This will enable you to add an authentication key. If this has not been created, refer back to the generic [configuration]
     * Change the 'Branch Specifier' to '*/Dev' as this will read any changes to the Dev branch.
     * Click the 'add' button beside 'Additional Behaviours' and select 'Merge before build' from the drop down. Set the 'Name of Repository' as 'origin' and the 'Branch to merge to' as main.     
-    ![source_code](images/source_code_management.png)    
+  
   * **Build Triggers**
     * Check the box for 'GitHub hook tigger for GITScm polling'
-    ![build_triggers](images/build_triggers.png)
+
   * **Build Environment**
     * Check the box for 'Provide Node & npm bin/ folder to PATH'
-    ![build_environemnt](images/build_environment.png)
+
   * **Build**
     * Check 'Execute shell' and add the following commands to execute the test file.
     ```bash
@@ -70,16 +70,16 @@ This documents the process of creating a CI pipeline for a Sparta sample node ap
     # Run tests
     npm test
     ```       
-    ![build](images/build.png)
+
   * **Post-Build Actions**
     * Click 'Add Post-Build action' and select 'Git Publisher' from the drop-down menu.
     * Check the boxes marked 'Push Only If Build Succeeds' and 'Merge Results.'
     * Set 'Branch to Push' as 'main' and 'Target remote name' as 'origin'.   
     * Add another action 'set GitHub commit status'. Leave as default
-    ![post build](images/post_build.png)
+
   * Save changes
 5. Create a webhook. Go to the repository settings on GitHub. Click 'Webhooks' and 'Add Webhook'. Under 'Payload URL' add http://ip:8080/github-webhook/ where ip depends on the jenkins ip address. Change 'Content type' to 'application/json' and select 'Send me everything' for trigger events. Save.      
-![webhook](images/webhhooks.png)    
+ 
 6. Execute a build by making a change to the code. Ensure the working branch is the Dev branch. This can be checked by running `git branch`.
 7. Introduce a failure to ensure the changes are not merged. This can be done by changing one of the tests.
 
