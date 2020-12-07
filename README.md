@@ -20,14 +20,14 @@ This documents the process of creating a CI pipeline for a Sparta sample node ap
 1. Run `vagrant up app` and `vagrant up db`
 2. In a separate terminal window, navigate to the tests directory `cd tests/`
 3. Run `rake spec`       
-![integration test app](images/integration_test_app.png)  
-![integration test db](images/integration_test_db.png)
+![integration test app]  
+![integration test db]
 
 4. Vagrant ssh into the App
 5. Navigate to the app directory `cd /home/ubuntu/app`
 6. Stop the app from running as this will prevent the tests from passing. `pm2 stop app.js`
 6. Run `npm test`    
-![unit test app](images/unittests.png)  
+![unit test app]  
 
 
 ### Jenkins CI
